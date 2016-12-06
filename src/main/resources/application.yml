@@ -1,0 +1,63 @@
+
+MagicEightBallGateway:
+  scopes: NA
+  magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/MagicEightBall/
+  oauth2:
+    tokenUrl: NA
+    client:
+      id: NA
+      secret: NA
+  basicAuth:
+    username: username
+    password: Password1
+
+---
+spring:
+  profiles: development
+
+MagicEightBallGateway:
+  scopes: NA
+  magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/MagicEightBall/
+  oauth2:
+    tokenUrl: NA
+    client:
+      id: NA
+      secret: NA
+  basicAuth:
+    username: username
+    password: Password1
+
+---
+#Yaas
+spring:
+    profiles: integration
+
+MagicEightBallGateway:
+  scopes: hybris.customer_read, hybris.customer_update
+  magicEightBallUrl: https://api.yaas.io/hybris/customer/v1/{tenant}/customers
+  oauth2:
+    tokenUrl: https://api.yaas.io/hybris/oauth2/v1/token
+    client:
+      id: RgBCu2uzXMXN8UKwg5CdEzgqmJuyIFl2
+      secret: uR3HLnuPeA5KbPBK
+  basicAuth:
+    username: toto
+    password: totopassword
+
+
+---
+# eureka
+spring:
+  profiles: production
+
+MagicEightBallGateway:
+  scopes: hybris.customer_read, hybris.customer_update
+  magicEightBallUrl: https://api.yaas.io/hybris/customer/v1/{tenant}/customers
+  oauth2:
+    tokenUrl: https://api.yaas.io/hybris/oauth2/v1/token
+    client:
+      id: RgBCu2uzXMXN8UKwg5CdEzgqmJuyIFl2
+      secret: uR3HLnuPeA5KbPBK
+  basicAuth:
+    username: toto
+    password: totopassword

@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootMagicEightBallClientProjectApplication {
+public class SpringBootMagicEightBallClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootMagicEightBallClientProjectApplication.class, args);
+		SpringApplication.run(SpringBootMagicEightBallClientApplication.class, args);
 	}
 }
