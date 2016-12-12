@@ -53,7 +53,7 @@ public class MagicEightBallGatewayProperties implements Serializable {
         this.oauth2 = oauth2;
     }
 
-    public static class Oauth2 {
+    public static class Oauth2 implements Serializable {
 
         private String tokenUrl;
 
@@ -75,7 +75,7 @@ public class MagicEightBallGatewayProperties implements Serializable {
             this.client = client;
         }
 
-        public static class Client {
+        public static class Client implements Serializable {
 
             private String id;
 
@@ -99,7 +99,7 @@ public class MagicEightBallGatewayProperties implements Serializable {
         }
     }
 
-    public static class BasicAuth {
+    public static class BasicAuth implements Serializable {
 
         private String username;
 

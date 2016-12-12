@@ -1,5 +1,6 @@
 package io.fdlessard.codebites.magiceightball.client.configurations;
 
+import io.fdlessard.codebites.magiceightball.client.gateway.errorhandlers.MagicEightBallGatewayErrorHandler;
 import io.fdlessard.codebites.magiceightball.client.properties.MagicEightBallGatewayProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +41,7 @@ public class DevelopmentConfiguration {
         restTemplate.setInterceptors(listOfInterceptors);
 
         // Setting the response error handler for the rest template
-        //restTemplate.setErrorHandler(new CustomerAccountResponseErrorHandler());
+        restTemplate.setErrorHandler(new MagicEightBallGatewayErrorHandler());
 
         return restTemplate;
     }

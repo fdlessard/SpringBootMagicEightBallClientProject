@@ -1,5 +1,6 @@
 package io.fdlessard.codebites.magiceightball.client.configurations;
 
+import io.fdlessard.codebites.magiceightball.client.gateway.errorhandlers.MagicEightBallGatewayErrorHandler;
 import io.fdlessard.codebites.magiceightball.client.gateway.interceptors.YaasRequestInterceptor;
 import io.fdlessard.codebites.magiceightball.client.properties.MagicEightBallGatewayProperties;
 import org.slf4j.Logger;
@@ -45,10 +46,10 @@ public class IntegrationConfiguration {
         return resource;
     }
 
-    @Bean(name = "customerAccountServiceRestTemplate")
-    public RestOperations getCustomerAccountServiceRestTemplate() {
+    @Bean(name = "magicEightBallRestTemplate")
+    public RestOperations getMagicEightBallRestTemplate() {
 
-        LOGGER.info("getCustomerAccountServiceRestTemplate()");
+        LOGGER.info("getMagicEightBallRestTemplate()");
 
         AccessTokenRequest atr = new DefaultAccessTokenRequest();
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(getResourceDetails(), new DefaultOAuth2ClientContext(atr));
@@ -59,7 +60,7 @@ public class IntegrationConfiguration {
         restTemplate.setInterceptors(listOfInterceptors);
 
         // Setting the response error handler for the rest template
-        //restTemplate.setErrorHandler(new CustomerAccountResponseErrorHandler());
+        restTemplate.setErrorHandler(new MagicEightBallGatewayErrorHandler());
 
         return restTemplate;
     }

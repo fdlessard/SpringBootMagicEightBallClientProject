@@ -1,17 +1,18 @@
 
 MagicEightBallGateway:
-  scopes: NA
+  scopes: hybris.magiceightball_read
   magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/MagicEightBall/
   oauth2:
-    tokenUrl: NA
+    tokenUrl: https://api.yaas.io/hybris/oauth2/v1/token
     client:
-      id: NA
-      secret: NA
+      id: OzmPuyjgvudY6yYklA4z4xUf0XkxFYrt
+      secret: UI5R8abdzUn0qjaR
   basicAuth:
     username: username
     password: Password1
 
 ---
+#HCP
 spring:
   profiles: development
 
@@ -41,8 +42,8 @@ MagicEightBallGateway:
       id: OzmPuyjgvudY6yYklA4z4xUf0XkxFYrt
       secret: UI5R8abdzUn0qjaR
   basicAuth:
-    username: toto
-    password: totopassword
+    username: username
+    password: Password1
 
 
 ---

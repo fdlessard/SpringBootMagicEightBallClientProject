@@ -1,7 +1,7 @@
-package io.fdlessard.codebites.magiceightball.client.gateway.Impl;
+package io.fdlessard.codebites.magiceightball.client.service.Impl;
 
 import io.fdlessard.codebites.magiceightball.client.domain.MagicEightBallAnswer;
-import io.fdlessard.codebites.magiceightball.client.gateway.MagicEightBallGateway;
+import io.fdlessard.codebites.magiceightball.client.services.MagicEightBallService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,27 +17,28 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
-@ActiveProfiles("development")
-public class MagicEightBallGatewayImplTest {
+//@ActiveProfiles("development")
+@ActiveProfiles("integration")
+public class MagicEightBallServiceImplTest {
 
     @Autowired
-    private MagicEightBallGateway magicEightBallGateway;
+    private MagicEightBallService magicEightBallService;
 
     @Test
     public void shake() throws Exception {
-        MagicEightBallAnswer magicEightBallAnswer = magicEightBallGateway.shake();
+        MagicEightBallAnswer magicEightBallAnswer = magicEightBallService.shake();
         System.out.print(magicEightBallAnswer);
     }
 
     @Test
     public void get() throws Exception {
-        MagicEightBallAnswer magicEightBallAnswer = magicEightBallGateway.get(1);
+        MagicEightBallAnswer magicEightBallAnswer = magicEightBallService.get(1);
         System.out.print(magicEightBallAnswer);
     }
 
     @Test
     public void getAll() throws Exception {
-        List<MagicEightBallAnswer> magicEightBallAnswers = magicEightBallGateway.getAll();
+        List<MagicEightBallAnswer> magicEightBallAnswers = magicEightBallService.getAll();
         System.out.print(magicEightBallAnswers);
     }
 
