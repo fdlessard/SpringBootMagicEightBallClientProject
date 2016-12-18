@@ -18,7 +18,7 @@ spring:
 
 MagicEightBallGateway:
   scopes: NA
-  magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/MagicEightBall/
+  magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/
   oauth2:
     tokenUrl: NA
     client:
@@ -52,13 +52,20 @@ spring:
   profiles: production
 
 MagicEightBallGateway:
-  scopes: hybris.customer_read, hybris.customer_update
-  magicEightBallUrl: https://api.yaas.io/hybris/customer/v1/{tenant}/customers
+  scopes: NA
+  magicEightBallUrl: http://magiceightball//MagicEightBall
   oauth2:
-    tokenUrl: https://api.yaas.io/hybris/oauth2/v1/token
+    tokenUrl: NA
     client:
-      id: RgBCu2uzXMXN8UKwg5CdEzgqmJuyIFl2
-      secret: uR3HLnuPeA5KbPBK
+      id: NA
+      secret: NA
   basicAuth:
-    username: toto
-    password: totopassword
+    username: username
+    password: Password1
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://eureka:Password1@eureka-server.cfapps.us10.hana.ondemand.com/eureka
+
+

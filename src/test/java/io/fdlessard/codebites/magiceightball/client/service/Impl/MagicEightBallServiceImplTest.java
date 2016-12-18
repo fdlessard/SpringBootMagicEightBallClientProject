@@ -18,7 +18,8 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest()
 //@ActiveProfiles("development")
-@ActiveProfiles("integration")
+//@ActiveProfiles("integration")
+@ActiveProfiles("production")
 public class MagicEightBallServiceImplTest {
 
     @Autowired

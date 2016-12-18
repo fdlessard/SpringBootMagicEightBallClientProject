@@ -29,7 +29,10 @@ public class MagicEightBallGateway {
 
         LOGGER.debug("MagicEightBallGateway.shake()");
 
-        return magicEightBallRestTemplate.getForObject(buildUrl() + "/shake", MagicEightBallAnswer.class);
+        String url = buildUrl() + "/shake";
+
+
+        return magicEightBallRestTemplate.getForObject(url, MagicEightBallAnswer.class);
     }
 
 

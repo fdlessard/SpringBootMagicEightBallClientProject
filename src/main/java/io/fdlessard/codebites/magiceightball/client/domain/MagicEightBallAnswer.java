@@ -1,5 +1,7 @@
 package io.fdlessard.codebites.magiceightball.client.domain;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 import java.io.Serializable;
 
 /**
@@ -11,13 +13,16 @@ public class MagicEightBallAnswer implements Serializable {
 
     private String message;
 
+    private String color;
+
     public MagicEightBallAnswer() {
-        //
+        // Needed by Jackson
     }
 
-    public MagicEightBallAnswer(String id, String message) {
+    public MagicEightBallAnswer(String id, String message, String color) {
         this.id = id;
         this.message = message;
+        this.color = color;
     }
 
     public String getId() {
@@ -36,11 +41,20 @@ public class MagicEightBallAnswer implements Serializable {
         this.message = message;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
-        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
+        return new ToStringBuilder(this)
                 .append("id", id)
                 .append("message", message)
+                .append("color", color)
                 .toString();
     }
 }
