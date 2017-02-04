@@ -1,3 +1,8 @@
+org:
+  apache:
+    http:
+      headers: info
+
 
 MagicEightBallGateway:
   scopes: hybris.magiceightball_read

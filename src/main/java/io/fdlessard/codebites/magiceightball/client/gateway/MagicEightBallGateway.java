@@ -29,29 +29,24 @@ public class MagicEightBallGateway {
 
         LOGGER.debug("MagicEightBallGateway.shake()");
 
-        String url = buildUrl() + "/shake";
-
-
-        return magicEightBallRestTemplate.getForObject(url, MagicEightBallAnswer.class);
+        return magicEightBallRestTemplate.getForObject(buildUrl("shake"), MagicEightBallAnswer.class);
     }
-
 
     public MagicEightBallAnswer get(int id) {
 
         LOGGER.debug("MagicEightBallGateway.get({})", id);
 
-        return magicEightBallRestTemplate.getForObject(buildUrl() +  "/get/" + id, MagicEightBallAnswer.class);
+        return magicEightBallRestTemplate.getForObject(buildUrl("get", Integer.toString(id)), MagicEightBallAnswer.class);
     }
 
     public List<MagicEightBallAnswer> getAll() {
 
-        LOGGER.debug("MagicEightBallGateway5r456.getAll()");
+        LOGGER.debug("MagicEightBallGateway.getAll()");
 
-        return magicEightBallRestTemplate.getForObject(buildUrl() + "/getAll", List.class);
-
+        return magicEightBallRestTemplate.getForObject(buildUrl("getAll"), List.class);
     }
 
-    private String buildUrl() {
-        return UriComponentsBuilder.fromUriString(magicEightBallGatewayProperties.getMagicEightBallUrl()).buildAndExpand().encode().toString();
+    private String buildUrl(String... pathSegment) {
+        return UriComponentsBuilder.fromUriString(magicEightBallGatewayProperties.getMagicEightBallUrl()).pathSegment(pathSegment).buildAndExpand().encode().toString();
     }
 }

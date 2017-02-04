@@ -29,8 +29,8 @@ public class ProductionConfiguration {
     @Autowired
     private MagicEightBallGatewayProperties magicEightBallGatewayProperties;
 
-    @LoadBalanced
     @Bean(name = "magicEightBallRestTemplate")
+    @LoadBalanced
     public RestOperations getMagicEightBallRestTemplate() {
 
         LOGGER.info("getMagicEightBallRestTemplate()");
@@ -40,6 +40,8 @@ public class ProductionConfiguration {
         // Setting the interceptors to add YaaS specific http header properties
         List<ClientHttpRequestInterceptor> listOfInterceptors = new ArrayList<>();
         listOfInterceptors.add(new BasicAuthorizationInterceptor(magicEightBallGatewayProperties.getBasicAuth().getUsername(), magicEightBallGatewayProperties.getBasicAuth().getPassword()));
+        //listOfInterceptors.add(new LoggingInterceptor());
+
         restTemplate.setInterceptors(listOfInterceptors);
 
         // Setting the response error handler for the rest template

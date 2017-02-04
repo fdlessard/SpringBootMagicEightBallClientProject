@@ -38,7 +38,6 @@ public class DevelopmentConfiguration {
         // Setting the interceptors to add YaaS specific http header properties
         List<ClientHttpRequestInterceptor> listOfInterceptors = new ArrayList<>();
         listOfInterceptors.add(new BasicAuthorizationInterceptor(magicEightBallGatewayProperties.getBasicAuth().getUsername(), magicEightBallGatewayProperties.getBasicAuth().getPassword()));
-        restTemplate.setInterceptors(listOfInterceptors);
 
         // Setting the response error handler for the rest template
         restTemplate.setErrorHandler(new MagicEightBallGatewayErrorHandler());

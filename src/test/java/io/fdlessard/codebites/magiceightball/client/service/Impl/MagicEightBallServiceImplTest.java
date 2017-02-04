@@ -19,7 +19,7 @@ import java.util.List;
 @SpringBootTest()
 //@ActiveProfiles("development")
 //@ActiveProfiles("integration")
-@ActiveProfiles("production")
+@ActiveProfiles("integration")
 public class MagicEightBallServiceImplTest {
 
     @Autowired
