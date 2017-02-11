@@ -2,7 +2,7 @@ logging.level.ROOT: INFO
 logging.level.org.springframework.web: DEBUG
 logging.level.org.apache: DEBUG
 
-
+tenantKey: hybris-tenant
 
 
 MagicEightBallGateway:
