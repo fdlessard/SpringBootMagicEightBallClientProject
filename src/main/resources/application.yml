@@ -1,7 +1,8 @@
-org:
-  apache:
-    http:
-      headers: info
+logging.level.ROOT: INFO
+logging.level.org.springframework.web: DEBUG
+logging.level.org.apache: DEBUG
+
+
 
 
 MagicEightBallGateway:
@@ -23,7 +24,7 @@ spring:
 
 MagicEightBallGateway:
   scopes: NA
-  magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/
+  magicEightBallUrl: https://magiceightball.cfapps.us10.hana.ondemand.com/MagicEightBall/
   oauth2:
     tokenUrl: NA
     client:

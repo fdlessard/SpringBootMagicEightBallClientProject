@@ -1,7 +1,7 @@
 package io.fdlessard.codebites.magiceightball.client.configurations;
 
 import io.fdlessard.codebites.magiceightball.client.gateway.errorhandlers.MagicEightBallGatewayErrorHandler;
-import io.fdlessard.codebites.magiceightball.client.gateway.interceptors.YaasRequestInterceptor;
+import io.fdlessard.codebites.magiceightball.client.gateway.interceptors.RestTemplateTenantInterceptor;
 import io.fdlessard.codebites.magiceightball.client.properties.MagicEightBallGatewayProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,7 +27,11 @@ import java.util.List;
 @Configuration
 @Profile("integration")
 public class IntegrationConfiguration {
+
     private static final Logger LOGGER = LoggerFactory.getLogger(IntegrationConfiguration.class);
+
+    @Autowired
+    private RestTemplateTenantInterceptor restTemplateTenantInterceptor;
 
     @Autowired
     private MagicEightBallGatewayProperties magicEightBallGatewayProperties;
@@ -56,7 +60,7 @@ public class IntegrationConfiguration {
 
         // Setting the interceptors to add YaaS specific http header properties
         List<ClientHttpRequestInterceptor> listOfInterceptors = new ArrayList<>();
-        listOfInterceptors.add(new YaasRequestInterceptor());
+        listOfInterceptors.add(restTemplateTenantInterceptor);
         restTemplate.setInterceptors(listOfInterceptors);
 
         // Setting the response error handler for the rest template
