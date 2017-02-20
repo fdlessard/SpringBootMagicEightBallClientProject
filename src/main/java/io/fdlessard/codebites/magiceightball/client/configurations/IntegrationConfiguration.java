@@ -32,7 +32,6 @@ public class IntegrationConfiguration {
 
     @Autowired
     private RestTemplateTenantInterceptor restTemplateTenantInterceptor;
-
     @Autowired
     private MagicEightBallGatewayProperties magicEightBallGatewayProperties;
 

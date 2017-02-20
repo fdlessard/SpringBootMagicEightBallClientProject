@@ -6,11 +6,13 @@ import io.fdlessard.codebites.magiceightball.client.properties.MagicEightBallGat
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.http.client.support.BasicAuthorizationInterceptor;
+import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.client.RestTemplate;
 
@@ -25,29 +27,26 @@ import java.util.List;
 public class DevelopmentConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DevelopmentConfiguration.class);
-
     @Autowired
     private RestTemplateTenantInterceptor restTemplateTenantInterceptor;
-
     @Autowired
     private MagicEightBallGatewayProperties magicEightBallGatewayProperties;
+    @Autowired
+    private ResponseErrorHandler responseErrorHandler;
+    @Autowired
+    RestTemplateBuilder restTemplateBuilder;
 
     @Bean(name = "magicEightBallRestTemplate")
     public RestOperations getMagicEightBallRestTemplate() {
 
         LOGGER.info("getMagicEightBallRestTemplate()");
 
-        RestTemplate restTemplate = new RestTemplate();
+        String username = magicEightBallGatewayProperties.getBasicAuth().getUsername();
+        String password = magicEightBallGatewayProperties.getBasicAuth().getPassword();
 
-        // Setting the interceptors to add YaaS specific http header properties
-        List<ClientHttpRequestInterceptor> listOfInterceptors = new ArrayList<>();
-        listOfInterceptors.add(new BasicAuthorizationInterceptor(magicEightBallGatewayProperties.getBasicAuth().getUsername(), magicEightBallGatewayProperties.getBasicAuth().getPassword()));
-        listOfInterceptors.add(restTemplateTenantInterceptor);
-
-        // Setting the response error handler for the rest template
-        restTemplate.setErrorHandler(new MagicEightBallGatewayErrorHandler());
-
-        return restTemplate;
+        return restTemplateBuilder.basicAuthorization(username, password)
+                .interceptors(restTemplateTenantInterceptor)
+                .errorHandler(responseErrorHandler).build();
     }
 
 }
